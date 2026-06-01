@@ -4,11 +4,11 @@ compatibility_date = "2024-09-23"
 
 [vars]
 MAX_PEERS_PER_ROOM = "2"
-ROOM_LIFETIME_MS = "1800000"
+ROOM_LIFETIME_MS = "180000000"
 ROOM_IDLE_TIMEOUT_MS = "300000"
 RATE_LIMIT_MAX_CONNECTIONS = "20"
 # Local dev: reconnect storms hit the 20/min cap instantly. Set false in production.
-DISABLE_RATE_LIMIT = "true"
+DISABLE_RATE_LIMIT = "false"
 
 [[durable_objects.bindings]]
 name = "ROOMS"
@@ -20,7 +20,7 @@ new_classes = ["Room"]
 
 [[kv_namespaces]]
 binding = "RATE_LIMIT_KV"
-id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
+id = "a9b8942655264e0e8e20f16090e58488"
 
 [dev]
 port = 8787

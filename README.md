@@ -75,20 +75,20 @@ Then open the local app, create a room, copy the link, and open it in a second t
 
 ## Environment variables
 
-| Variable | App | Description |
-| -------- | --- | ----------- |
+| Variable                    | App | Description                                                                                                                     |
+| --------------------------- | --- | ------------------------------------------------------------------------------------------------------------------------------- |
 | `NEXT_PUBLIC_SIGNALING_URL` | web | WebSocket base URL for signaling, such as `ws://localhost:8787` in development or `wss://your-worker.workers.dev` in production |
 
 ## Scripts
 
-| Command | Description |
-| ------- | ----------- |
-| `pnpm dev:web` | Start the Next.js dev server |
-| `pnpm dev:signaling` | Start the Wrangler dev server |
-| `pnpm build` | Build all packages |
-| `pnpm typecheck` | Run TypeScript checks across the workspace |
-| `pnpm lint` | Lint all packages |
-| `pnpm test` | Run unit tests |
+| Command              | Description                                |
+| -------------------- | ------------------------------------------ |
+| `pnpm dev:web`       | Start the Next.js dev server               |
+| `pnpm dev:signaling` | Start the Wrangler dev server              |
+| `pnpm build`         | Build all packages                         |
+| `pnpm typecheck`     | Run TypeScript checks across the workspace |
+| `pnpm lint`          | Lint all packages                          |
+| `pnpm test`          | Run unit tests                             |
 
 ## Deployment
 
@@ -114,4 +114,4 @@ After the DataChannel opens, message bytes no longer pass through the server.
 
 ## License
 
-MIT
+Apache 2.0
