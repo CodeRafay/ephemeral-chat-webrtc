@@ -23,6 +23,7 @@ The signaling worker needs a KV namespace for rate limiting.
 1. Open the Cloudflare dashboard.
 2. Create a KV namespace for the signaling worker.
 3. Copy the namespace ID into [apps/signaling/wrangler.toml](apps/signaling/wrangler.toml) in place of `REPLACE_WITH_YOUR_KV_NAMESPACE_ID`.
+4. If you are on Cloudflare's free plan, keep the Durable Object migration in sqlite format (`new_sqlite_classes`) so deploys are accepted.
 
 You only need to do this once unless you recreate the namespace.
 
@@ -50,13 +51,13 @@ From the repository root:
 
 ```bash
 pnpm install
-pnpm --filter signaling deploy
+pnpm --filter signaling run deploy
 ```
 
 If this is your first time using Wrangler, log in first:
 
 ```bash
-pnpm --filter signaling wrangler login
+pnpm --filter signaling exec wrangler login
 ```
 
 After deployment, note the public worker URL. You will use it in the web app environment variable.
@@ -68,7 +69,7 @@ If you deploy from GitHub Actions or another CI system, add these secrets:
 - `CF_API_TOKEN`
 - `CF_ACCOUNT_ID`
 
-Then run the same `pnpm --filter signaling deploy` command in CI.
+Then run the same `pnpm --filter signaling run deploy` command in CI.
 
 ## Deploy the web app to Vercel
 
@@ -101,7 +102,7 @@ If you want the shortest practical path, use this exact sequence:
 
 ```bash
 pnpm install
-pnpm --filter signaling deploy
+pnpm --filter signaling run deploy
 ```
 
 Then:
@@ -135,7 +136,7 @@ Then:
 ```bash
 pnpm dev:signaling
 pnpm dev:web
-pnpm --filter signaling deploy
+pnpm --filter signaling run deploy
 pnpm build
 pnpm typecheck
 ```
@@ -148,7 +149,7 @@ Deployment steps:
 2. Create a Cloudflare account.
 3. In Cloudflare, create a KV namespace for the signaling worker.
 4. Put the KV namespace ID into wrangler.toml.
-5. Deploy the signaling worker with pnpm --filter signaling deploy.
+5. Deploy the signaling worker with pnpm --filter signaling run deploy.
 6. Copy the deployed worker URL, for example wss://your-worker.your-subdomain.workers.dev.
 7. Create a Vercel project from the same GitHub repo.
 8. Set the root directory to web.
